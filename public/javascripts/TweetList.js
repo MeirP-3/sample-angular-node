@@ -8,7 +8,7 @@ app.controller('TweetList', function($scope, $resource, $timeout) {
     function init () {
 
       // set a default username value
-      $scope.username = "twitterdev";
+      $scope.username = "golum_from";
       
       // empty tweet model
       $scope.tweetsResult = [];

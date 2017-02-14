@@ -36,7 +36,7 @@
 	  			<span class="input-group-addon">@</span>
 
 					<!-- this text input is binded to a variable in the javascript controller -->
-				  <input type="text" class="form-control" placeholder="TwitterDev" ng-model="username">
+				  <input type="text" class="form-control" placeholder="golum_from" ng-model="username">
 
 					<span class="input-group-btn">
 		        <button class="btn btn-default" type="submit">Get Tweets</button>
@@ -62,7 +62,7 @@
 								Tweeted from <span ng-bind-html="tweet.source"></span>
 
 								<!-- play around with rendering different Tweet properties -->
-								<!-- <p>{{tweet.user.screen_name}}</p> -->
+								<p id="meir">{{tweet.user.screen_name}}</p>
 								<!-- <p>{{tweet.text}}</p> -->
 							</div>
 		    		</div>
