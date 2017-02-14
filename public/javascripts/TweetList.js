@@ -54,6 +54,12 @@ app.controller('TweetList', function($scope, $resource, $timeout) {
           $scope.tweetsResult = [];
         }
 
+        //if it's on "get more tweets"
+        //then pop the tweet with the max_id so it will not show twice
+        if(paging) {
+          $scope.tweetsResult.pop();
+        }
+        
         $scope.tweetsResult = $scope.tweetsResult.concat(res);
 
         // for paging - https://dev.twitter.com/docs/working-with-timelines

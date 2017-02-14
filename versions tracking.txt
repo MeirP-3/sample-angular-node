@@ -1,0 +1,9 @@
+version 1:
+1. added config.js file.
+2. set id = "meir" to tweet screen_name view in index.ejs for tests
+3. set defualt user to golum_from.
+
+version 2:
+1. in case of "get more tweets" every tweet will be shown only once.
+2. all tweets come in chronological order.
+3. versions tracking.txt added.

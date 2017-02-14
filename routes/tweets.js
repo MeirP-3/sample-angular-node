@@ -16,7 +16,7 @@ var USER_TIMELINE_URL = 'statuses/user_timeline';
  */
 router.get('/user_timeline/:user', function(req, res) {
 
-  var oEmbedTweets = [], tweets = [],
+  var oEmbedTweets = [], tweets = [], handledTweets = 0, tweetsReceived = 0;
 
   params = {
     screen_name: req.params.user, // the user id passed in as part of the route
@@ -32,18 +32,19 @@ router.get('/user_timeline/:user', function(req, res) {
   twitter.get(USER_TIMELINE_URL, params, function (err, data, resp) {
 
     tweets = data;
+    tweetsReceived = tweets.length;
 
     var i = 0, len = tweets.length;
 
     for(i; i < len; i++) {
-      getOEmbed(tweets[i]);
+      getOEmbed(tweets[i],i);
     }
   });
 
   /**
    * requests the oEmbed html
    */
-  function getOEmbed (tweet) {
+  function getOEmbed (tweet,index) {
 
     // oEmbed request params
     var params = {
@@ -56,10 +57,11 @@ router.get('/user_timeline/:user', function(req, res) {
     // request data 
     twitter.get(OEMBED_URL, params, function (err, data, resp) {
       tweet.oEmbed = data;
-      oEmbedTweets.push(tweet);
+      oEmbedTweets[index] = tweet;
+      handledTweets++;
 
       // do we have oEmbed HTML for all Tweets?
-      if (oEmbedTweets.length == tweets.length) {
+      if (handledTweets === tweetsReceived) {
         res.setHeader('Content-Type', 'application/json');
         res.send(oEmbedTweets);
       }
