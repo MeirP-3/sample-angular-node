@@ -5,5 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.render('index', { title: 'Angular, Node and Twitter API' });
 });
+router.get('/table', function(req, res) {
+  res.render('table', { title: 'table'});
+});
 
 module.exports = router;

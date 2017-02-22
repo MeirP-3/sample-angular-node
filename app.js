@@ -15,6 +15,7 @@ app.set('view engine', 'ejs');
 
 // setup routes
 app.use('/', index);
+app.use('/table',index);
 app.use('/tweets', tweets);
 
 
