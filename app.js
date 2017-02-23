@@ -15,9 +15,11 @@ app.set('view engine', 'ejs');
 
 // setup routes
 app.use('/', index);
-app.use('/table',index);
 app.use('/tweets', tweets);
 
+app.get('/table.html', function(req, res) {
+  res.sendfile(path.join(__dirname+'/views/table.html'));
+});
 
 module.exports = app;
 
